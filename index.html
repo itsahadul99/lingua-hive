@@ -46,7 +46,7 @@
         </div>
     </header>
     <main class="flex">
-        <aside class="flex flex-col justify-between px-[21px] pt-[38px] h-[calc(100vh-80px)] bg-white w-[308px]">
+        <aside class="flex flex-col justify-between px-[21px] pt-[38px] bg-white w-[308px]">
             <div>
                 <div class="flex justify-between items-center px-[14px] py-[10px] rounded-md"
                     style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);">
@@ -61,7 +61,7 @@
                     style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);">
                     <div class="flex items-center gap-[10px] text-[#151515] text-sm font-normal">
                         <input class="size-6 outline-gray-400" type="checkbox" class="mr-2">
-                        <p> Essential Task</p>
+                        <p>Survival Task</p>
                     </div>
                     <div class="flex items-center gap-[10px] text-[#151515] text-sm font-normal">
                         <input class="size-6 outline-gray-400" type="checkbox" class="mr-2">
@@ -72,14 +72,19 @@
                         <p>Social Task</p>
                     </div>
                 </div>
-
-
                 <div class="mt-[22px]">
                     <h1 class="text-sm font-normal text-[rgba(21, 21, 21, 0.55)]">Select Course to see Tasks</h1>
-                    <select name="courseTask" class="w-full px-[14px] py-[10px] mt-2 opacity-40"
+                    <div name="courseTask" class="w-full px-[14px] py-[10px] mt-2 opacity-40"
                         style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);">
-                        <option class="w-full justify-between" value="Task List">Task List</option>
-                    </select>
+                        <div class="flex justify-between items-center">
+                            <p>Task List</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <path d="M5 7.5L10 12.5L15 7.5" stroke="#2F234F" stroke-width="1.66667"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
             <button class="bg-[#F5A800] text-white rounded-md px-5 py-1 cursor-pointer mb-[140px]"
@@ -90,43 +95,170 @@
         <div class="bg-[#FAFAFB] flex-1 pt-6 pl-[22px] pr-[34px]">
             <div class="w-full">
                 <!-- search start -->
-                <div class="bg-[#EBE6FF] p-4 rounded-lg shadow-md w-full h-[161px]">
+                <div class="px-[19px] pt-7 pb-[40px] rounded-lg shadow-md w-full" style="background: rgba(235, 230, 255, 0.80);
+                box-shadow: 0px 30px 40px 0px rgba(212, 217, 232, 0.20);">
                     <div class="flex items-center space-x-3 mb-3">
-                        <svg class="w-5 h-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 15l4.35 4.35M19 9A7 7 0 11 5 9a7 7 0 0114 0z" />
-                        </svg>
-                        <h2 class="text-xl  font-semibold text-gray-800">Search your Classes</h2>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <path
+                                    d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                                    stroke="#2F234F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M21.0004 21L16.6504 16.65" stroke="#2F234F" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <h2 class="text-xl  font-semibold text-[#2F234F]">Search your Classes</h2>
                     </div>
 
-                    <div class="flex  gap-3">
+                    <div class="flex gap-3">
                         <div class="flex flex-1 gap-3">
                             <!-- Date Dropdown -->
-                            <select
-                                class="w-full md:w-1/3 px-4 py-2 border rounded-md  focus:ring-purple-500">
-                                <option>Date</option>
-                                <option>Today</option>
-                                <option>Tomorrow</option>
-                                <option>This Week</option>
-                            </select>
+                            <div class="group relative w-[377px] flex justify-between items-center px-4 py-2 border border-[#D0D5DD] rounded-md bg-white focus-within:ring-2 focus-within:ring-purple-600"
+                                style="box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);" tabindex="0">
+                                <p class="text-[#667085] font-normal text-base">Date</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none">
+                                    <path d="M5 7.5L10 12.5L15 7.5" stroke="#2F234F" stroke-width="1.66667"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <!-- Date Picker -->
+                                <div
+                                    class="bg-white rounded-lg shadow-md p-4 w-[406px] absolute top-12 left-0 opacity-0 invisible transition-opacity duration-300 ease-in-out group-focus-within:opacity-100 group-focus-within:visible z-10">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <button class="text-purple-600">Select Date</button>
+                                        <button
+                                            class="border border-purple-600 text-purple-600 px-2 py-1 rounded-lg">Reset
+                                            Date</button>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path d="M15 6L9 12L15 18" stroke="#131A29" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <span class="text-lg font-semibold">March 2025</span>
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path d="M9 6L15 12L9 18" stroke="#131A29" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-2 text-center mt-3 text-gray-500">
+                                        <span>Mo</span> <span>Tu</span> <span>We</span> <span>Th</span> <span>Fr</span>
+                                        <span>Sa</span> <span>Su</span>
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-7 gap-2 text-center mt-2 *:bg-[#F5F5F5] *:p-2 *:rounded-md text-[#131A29] text-lg font-semibold">
+                                        <span class="text-[#C4C4C4]">30</span>
+                                        <span class="text-[#C4C4C4]">31</span>
+                                        <span>1</span> <span>2</span> <span>3</span> <span
+                                            class="font-semibold">4</span>
+                                        <span>5</span>
+                                        <span>6</span> <span>7</span> <span>8</span> <span>9</span> <span>10</span>
+                                        <span>11</span> <span>12</span>
+                                        <span>13</span> <span>14</span> <span class="!bg-[#7E22CE] text-white">15</span>
+                                        <span>16</span> <span>17</span> <span>18</span> <span>19</span>
+                                        <span>20</span> <span>21</span> <span>22</span> <span>23</span>
+                                        <span class="relative">24<span
+                                                class="absolute bottom-0 right-0 text-purple-600">.</span></span>
+                                        <span>25</span> <span>26</span>
+                                        <span>27</span> <span>28</span> <span>29</span> <span>30</span> <span>31</span>
+                                        <span class="text-[#C4C4C4]">1</span> <span class="text-[#C4C4C4]">2</span>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- Time Dropdown -->
-                            <select
-                                class="w-full md:w-1/3 px-4 py-2 border rounded-md  focus:ring-purple-500">
-                                <option>Time</option>
-                                <option>Morning</option>
-                                <option>Afternoon</option>
-                                <option>Evening</option>
-                            </select>
-                            <!-- Class Dropdown -->
-                            <select
-                                class="w-full md:w-1/3 px-4 py-2 border rounded-md  focus:ring-purple-500">
-                                <option>Time</option>
-                                <option>Morning</option>
-                                <option>Afternoon</option>
-                                <option>Evening</option>
-                            </select>
+                            <div class="group relative w-[377px] flex justify-between items-center px-4 py-2 border border-[#D0D5DD] rounded-md bg-white focus-within:ring-2 focus-within:ring-purple-600"
+                                style="box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);" tabindex="0">
+                                <p class="text-[#667085] font-normal text-base">Time</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none">
+                                    <path d="M5 7.5L10 12.5L15 7.5" stroke="#2F234F" stroke-width="1.66667"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+
+                                <!-- Time Picker -->
+                                <div
+                                    class="bg-white rounded-lg shadow-md p-4 w-[406px] absolute top-12 left-0 opacity-0 invisible transition-opacity duration-300 ease-in-out group-focus-within:opacity-100 group-focus-within:visible z-10">
+                                    <div class="flex justify-between items-center">
+                                        <button class="text-purple-600">Select Time</button>
+                                        <button
+                                            class="border border-purple-600 text-purple-600 px-2 py-1 rounded-lg">Reset
+                                            Time</button>
+                                    </div>
+                                    <div class="flex justify-center items-center gap-2 py-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16"
+                                            viewBox="0 0 17 16" fill="none">
+                                            <mask id="mask0_1_1606" style="mask-type:alpha" maskUnits="userSpaceOnUse"
+                                                x="0" y="0" width="17" height="16">
+                                                <rect x="0.5" width="16" height="16" fill="#D9D9D9" />
+                                            </mask>
+                                            <g mask="url(#mask0_1_1606)">
+                                                <path
+                                                    d="M7.83305 2.66663V0.666626H9.16638V2.66663H7.83305ZM7.83305 15.3333V13.3333H9.16638V15.3333H7.83305ZM13.833 8.66663V7.33329H15.833V8.66663H13.833ZM1.16638 8.66663V7.33329H3.16638V8.66663H1.16638ZM12.9664 4.46663L12.033 3.53329L13.1997 2.33329L14.1664 3.29996L12.9664 4.46663ZM3.79972 13.6666L2.83305 12.7L4.03305 11.5333L4.96638 12.4666L3.79972 13.6666ZM13.1997 13.6666L12.033 12.4666L12.9664 11.5333L14.1664 12.7L13.1997 13.6666ZM4.03305 4.46663L2.83305 3.29996L3.79972 2.33329L4.96638 3.53329L4.03305 4.46663ZM8.49971 12C7.3886 12 6.44416 11.6111 5.66638 10.8333C4.8886 10.0555 4.49971 9.11107 4.49971 7.99996C4.49971 6.88885 4.8886 5.9444 5.66638 5.16663C6.44416 4.38885 7.3886 3.99996 8.49971 3.99996C9.61083 3.99996 10.5553 4.38885 11.333 5.16663C12.1108 5.9444 12.4997 6.88885 12.4997 7.99996C12.4997 9.11107 12.1108 10.0555 11.333 10.8333C10.5553 11.6111 9.61083 12 8.49971 12ZM8.49971 10.6666C9.24416 10.6666 9.87471 10.4083 10.3914 9.89163C10.908 9.37496 11.1664 8.7444 11.1664 7.99996C11.1664 7.25551 10.908 6.62496 10.3914 6.10829C9.87471 5.59163 9.24416 5.33329 8.49971 5.33329C7.75527 5.33329 7.12472 5.59163 6.60805 6.10829C6.09138 6.62496 5.83305 7.25551 5.83305 7.99996C5.83305 8.7444 6.09138 9.37496 6.60805 9.89163C7.12472 10.4083 7.75527 10.6666 8.49971 10.6666Z"
+                                                    fill="#1C1B1F" />
+                                            </g>
+                                        </svg>
+                                        Morning
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-6 gap-2 text-center mt-2 *:bg-[#F5F5F5] *:p-2 *:rounded-md text-[#131A29] text-sm font-normal">
+                                        <span>00:00</span><span>01:00</span><span>02:00</span> <span>03:00</span>
+                                        <span>04:00</span>
+                                        <span>05:00</span>
+                                        <span>06:00</span><span>07:00</span> <span>08:00</span> <span>09:00</span> <span
+                                            class="!bg-[#7E22CE] text-white">10:00</span>
+                                        <span>11:00</span>
+                                    </div>
+                                    <div class="flex justify-center items-center gap-2 py-2 my-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <mask id="mask0_1_1640" style="mask-type:alpha" maskUnits="userSpaceOnUse"
+                                                x="0" y="0" width="16" height="16">
+                                                <rect width="16" height="16" fill="#D9D9D9" />
+                                            </mask>
+                                            <g mask="url(#mask0_1_1640)">
+                                                <path
+                                                    d="M8.06671 14.6666C7.13337 14.6666 6.25837 14.4889 5.44171 14.1333C4.62504 13.7778 3.91393 13.2972 3.30837 12.6916C2.70282 12.0861 2.22226 11.375 1.86671 10.5583C1.51115 9.74165 1.33337 8.86665 1.33337 7.93331C1.33337 6.31109 1.85004 4.88054 2.88337 3.64165C3.91671 2.40276 5.23337 1.63331 6.83337 1.33331C6.63337 2.43331 6.69449 3.50831 7.01671 4.55831C7.33893 5.60831 7.89448 6.52776 8.68337 7.31665C9.47226 8.10554 10.3917 8.66109 11.4417 8.98331C12.4917 9.30553 13.5667 9.36665 14.6667 9.16665C14.3778 10.7666 13.6112 12.0833 12.3667 13.1166C11.1223 14.15 9.68893 14.6666 8.06671 14.6666ZM8.06671 13.3333C9.04449 13.3333 9.95004 13.0889 10.7834 12.6C11.6167 12.1111 12.2723 11.4389 12.75 10.5833C11.7945 10.4944 10.8889 10.2528 10.0334 9.85831C9.17782 9.46387 8.41115 8.92776 7.73337 8.24998C7.0556 7.5722 6.51671 6.80553 6.11671 5.94998C5.71671 5.09442 5.47782 4.18887 5.40004 3.23331C4.54448 3.71109 3.87504 4.36942 3.39171 5.20831C2.90837 6.0472 2.66671 6.95554 2.66671 7.93331C2.66671 9.43331 3.19171 10.7083 4.24171 11.7583C5.29171 12.8083 6.56671 13.3333 8.06671 13.3333Z"
+                                                    fill="#1C1B1F" />
+                                            </g>
+                                        </svg>
+                                        After noon/Evening
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-6 gap-2 text-center mt-2 *:bg-[#F5F5F5] *:p-2 *:rounded-md text-[#131A29] text-sm font-normal">
+                                        <span>00:00</span><span class="!bg-[#7E22CE] text-white">01:00</span><span
+                                            class="!bg-[#7E22CE] text-white">02:00</span> <span>03:00</span> <span
+                                            class="!bg-[#7E22CE] text-white">04:00</span>
+                                        <span>05:00</span>
+                                        <span>06:00</span><span>07:00</span> <span>08:00</span> <span>09:00</span>
+                                        <span>10:00</span>
+                                        <span>11:00</span>
+                                    </div>
+                                    <div class="mt-5 flex justify-center gap-5">
+                                        <button
+                                            class="px-5 py-2 rounded-lg border border-[#7E22CE] text-sm text-black font-semibold bg-[#7E22CE66]">
+                                            Exact Time
+                                        </button>
+                                        <button
+                                            class="px-5 py-2 rounded-lg border border-[#7E22CE] text-[#7E22CE] text-sm font-semibold flex items-center gap-1">
+                                            <img src="./assets/plusMinus.png" alt="">
+                                            1 hour
+                                        </button>
+                                        <button
+                                            class="px-5 py-2 rounded-lg border border-[#7E22CE] text-[#7E22CE] text-sm font-semibold flex items-center gap-1">
+                                            <img src="./assets/plusMinus.png" alt="">
+                                            2 hour
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- Buttons -->
                         <div class="flex gap-2 w-full md:w-auto">
@@ -140,7 +272,214 @@
                 </div>
                 <!-- search end -->
             </div>
-        </div>
+            <!-- Recent Classes -->
+            <div class="w-full mt-7">
+                <h1 class="mb-[30px] text-2xl text-[#000] font-semibold">Recent Classes</h1>
+                <div>
+                    <div class=" flex justify-between items-center p-4 bg-white border border-[#E4E4E4] gap-[88px]"
+                        style="border-radius: 10px 10px 0px 0px;">
+                        <div class="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15"
+                                fill="none">
+                                <path
+                                    d="M6.99968 1.08337C5.73058 1.08337 4.48998 1.4597 3.43477 2.16478C2.37955 2.86985 1.55711 3.872 1.07145 5.04449C0.585788 6.21698 0.458717 7.50716 0.706305 8.75187C0.953894 9.99658 1.56502 11.1399 2.46241 12.0373C3.3598 12.9347 4.50314 13.5458 5.74785 13.7934C6.99256 14.041 8.28274 13.9139 9.45523 13.4283C10.6277 12.9426 11.6299 12.1202 12.3349 11.065C13.04 10.0097 13.4163 8.76914 13.4163 7.50004C13.4143 5.79885 12.7377 4.16791 11.5347 2.96499C10.3318 1.76207 8.70087 1.08538 6.99968 1.08337ZM9.16209 9.66246C9.0527 9.77182 8.90436 9.83325 8.74968 9.83325C8.595 9.83325 8.44665 9.77182 8.33726 9.66246L6.58726 7.91246C6.47786 7.80309 6.41638 7.65474 6.41634 7.50004V4.00004C6.41634 3.84533 6.4778 3.69696 6.5872 3.58756C6.69659 3.47817 6.84497 3.41671 6.99968 3.41671C7.15439 3.41671 7.30276 3.47817 7.41216 3.58756C7.52155 3.69696 7.58301 3.84533 7.58301 4.00004V7.25854L9.16209 8.83762C9.27145 8.94702 9.33289 9.09536 9.33289 9.25004C9.33289 9.40472 9.27145 9.55307 9.16209 9.66246Z"
+                                    fill="#7E22CE" />
+                            </svg>
+                            <p class="text-[#2C2C2C] text-xs font-normal">1:00 PM</p>
+                        </div>
+                        <div class="space-y-2 max-w-[296px]">
+                            <div class="flex items-center gap-[6px] text-[10px] font-semibold text-[#7E22CE]">
+                                <p>Survival Task</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="5" height="6" viewBox="0 0 5 6"
+                                    fill="none">
+                                    <circle cx="2.5" cy="3" r="2.5" fill="#7E22CE" />
+                                </svg>
+                                <p>Task 1</p>
+                            </div>
+                            <h1 class="text-[#303030] font-bold text-base">Visiting a Doctor’s Office</h1>
+                            <p class="text-[#303030] text-xs font-normal">
+                                Learn key phrases for appointments, symptoms, and medical advice through role-playing
+                                common doctor visit scenarios.</p>
+                        </div>
+                        <div class="flex items-start gap-[14px]">
+                            <img src="./assets/user1.png" alt="">
+                            <div>
+                                <p class="text-[10px] uppercase font-semibold mb-[6px]">course instructor</p>
+                                <h4 class="text-sm font-semibold uppercase text-[#7E22CE]">Romer Brady</h4>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="px-4 py-2 bg-[#7E22CE] text-white rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Book Now</button>
+                            <button
+                                class="px-4 py-2 border-[1.7px] border-[#F5A800] text-[#F5A800] rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Details</button>
+                        </div>
+                    </div>
+                    <div class=" flex justify-between items-center p-4 bg-white border border-[#E4E4E4] gap-[88px]">
+                        <div class="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15"
+                                fill="none">
+                                <path
+                                    d="M6.99968 1.08337C5.73058 1.08337 4.48998 1.4597 3.43477 2.16478C2.37955 2.86985 1.55711 3.872 1.07145 5.04449C0.585788 6.21698 0.458717 7.50716 0.706305 8.75187C0.953894 9.99658 1.56502 11.1399 2.46241 12.0373C3.3598 12.9347 4.50314 13.5458 5.74785 13.7934C6.99256 14.041 8.28274 13.9139 9.45523 13.4283C10.6277 12.9426 11.6299 12.1202 12.3349 11.065C13.04 10.0097 13.4163 8.76914 13.4163 7.50004C13.4143 5.79885 12.7377 4.16791 11.5347 2.96499C10.3318 1.76207 8.70087 1.08538 6.99968 1.08337ZM9.16209 9.66246C9.0527 9.77182 8.90436 9.83325 8.74968 9.83325C8.595 9.83325 8.44665 9.77182 8.33726 9.66246L6.58726 7.91246C6.47786 7.80309 6.41638 7.65474 6.41634 7.50004V4.00004C6.41634 3.84533 6.4778 3.69696 6.5872 3.58756C6.69659 3.47817 6.84497 3.41671 6.99968 3.41671C7.15439 3.41671 7.30276 3.47817 7.41216 3.58756C7.52155 3.69696 7.58301 3.84533 7.58301 4.00004V7.25854L9.16209 8.83762C9.27145 8.94702 9.33289 9.09536 9.33289 9.25004C9.33289 9.40472 9.27145 9.55307 9.16209 9.66246Z"
+                                    fill="#7E22CE" />
+                            </svg>
+                            <p class="text-[#2C2C2C] text-xs font-normal">1:00 PM</p>
+                        </div>
+                        <div class="space-y-2 max-w-[296px]">
+                            <div class="flex items-center gap-[6px] text-[10px] font-semibold text-[#7E22CE]">
+                                <p>Business Task</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="5" height="6" viewBox="0 0 5 6"
+                                    fill="none">
+                                    <circle cx="2.5" cy="3" r="2.5" fill="#7E22CE" />
+                                </svg>
+                                <p>Task 1</p>
+                            </div>
+                            <h1 class="text-[#303030] font-bold text-base">Introducing Yourself in a Meeting</h1>
+                            <p class="text-[#303030] text-xs font-normal">Learn how to confidently introduce yourself,
+                                state your role, and make a positive first impression in a professional setting.</p>
+                        </div>
+                        <div class="flex items-start gap-[14px]">
+                            <img src="./assets/helen.png" alt="">
+                            <div>
+                                <p class="text-[10px] uppercase font-semibold mb-[6px]">course instructor</p>
+                                <h4 class="text-sm font-semibold uppercase text-[#7E22CE]">Helen Syniee</h4>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="px-4 py-2 bg-[#7E22CE] text-white rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Book Now</button>
+                            <button
+                                class="px-4 py-2 border-[1.7px] border-[#F5A800] text-[#F5A800] rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Details</button>
+                        </div>
+                    </div>
+                    <div class=" flex justify-between items-center p-4 bg-white border border-[#E4E4E4] gap-[88px]">
+                        <div class="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15"
+                                fill="none">
+                                <path
+                                    d="M6.99968 1.08337C5.73058 1.08337 4.48998 1.4597 3.43477 2.16478C2.37955 2.86985 1.55711 3.872 1.07145 5.04449C0.585788 6.21698 0.458717 7.50716 0.706305 8.75187C0.953894 9.99658 1.56502 11.1399 2.46241 12.0373C3.3598 12.9347 4.50314 13.5458 5.74785 13.7934C6.99256 14.041 8.28274 13.9139 9.45523 13.4283C10.6277 12.9426 11.6299 12.1202 12.3349 11.065C13.04 10.0097 13.4163 8.76914 13.4163 7.50004C13.4143 5.79885 12.7377 4.16791 11.5347 2.96499C10.3318 1.76207 8.70087 1.08538 6.99968 1.08337ZM9.16209 9.66246C9.0527 9.77182 8.90436 9.83325 8.74968 9.83325C8.595 9.83325 8.44665 9.77182 8.33726 9.66246L6.58726 7.91246C6.47786 7.80309 6.41638 7.65474 6.41634 7.50004V4.00004C6.41634 3.84533 6.4778 3.69696 6.5872 3.58756C6.69659 3.47817 6.84497 3.41671 6.99968 3.41671C7.15439 3.41671 7.30276 3.47817 7.41216 3.58756C7.52155 3.69696 7.58301 3.84533 7.58301 4.00004V7.25854L9.16209 8.83762C9.27145 8.94702 9.33289 9.09536 9.33289 9.25004C9.33289 9.40472 9.27145 9.55307 9.16209 9.66246Z"
+                                    fill="#7E22CE" />
+                            </svg>
+                            <p class="text-[#2C2C2C] text-xs font-normal">1:00 PM</p>
+                        </div>
+                        <div class="space-y-2 max-w-[296px]">
+                            <div class="flex items-center gap-[6px] text-[10px] font-semibold text-[#7E22CE]">
+                                <p>Social Task</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="5" height="6" viewBox="0 0 5 6"
+                                    fill="none">
+                                    <circle cx="2.5" cy="3" r="2.5" fill="#7E22CE" />
+                                </svg>
+                                <p>Task 1</p>
+                            </div>
+                            <h1 class="text-[#303030] font-bold text-base">Making a Reservation for an Event</h1>
+                            <p class="text-[#303030] text-xs font-normal">Learn how to book tickets, inquire about
+                                seating, and confirm details for concerts, movies, or gatherings.</p>
+                        </div>
+                        <div class="flex items-start gap-[14px]">
+                            <img src="./assets/ativia.png" alt="">
+                            <div>
+                                <p class="text-[10px] uppercase font-semibold mb-[6px]">course instructor</p>
+                                <h4 class="text-sm font-semibold uppercase text-[#7E22CE]">Ativia Jones</h4>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="px-4 py-2 bg-[#7E22CE] text-white rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Book Now</button>
+                            <button
+                                class="px-4 py-2 border-[1.7px] border-[#F5A800] text-[#F5A800] rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Details</button>
+                        </div>
+                    </div>
+                    <div class=" flex justify-between items-center p-4 bg-white border border-[#E4E4E4] gap-[88px]">
+                        <div class="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15"
+                                fill="none">
+                                <path
+                                    d="M6.99968 1.08337C5.73058 1.08337 4.48998 1.4597 3.43477 2.16478C2.37955 2.86985 1.55711 3.872 1.07145 5.04449C0.585788 6.21698 0.458717 7.50716 0.706305 8.75187C0.953894 9.99658 1.56502 11.1399 2.46241 12.0373C3.3598 12.9347 4.50314 13.5458 5.74785 13.7934C6.99256 14.041 8.28274 13.9139 9.45523 13.4283C10.6277 12.9426 11.6299 12.1202 12.3349 11.065C13.04 10.0097 13.4163 8.76914 13.4163 7.50004C13.4143 5.79885 12.7377 4.16791 11.5347 2.96499C10.3318 1.76207 8.70087 1.08538 6.99968 1.08337ZM9.16209 9.66246C9.0527 9.77182 8.90436 9.83325 8.74968 9.83325C8.595 9.83325 8.44665 9.77182 8.33726 9.66246L6.58726 7.91246C6.47786 7.80309 6.41638 7.65474 6.41634 7.50004V4.00004C6.41634 3.84533 6.4778 3.69696 6.5872 3.58756C6.69659 3.47817 6.84497 3.41671 6.99968 3.41671C7.15439 3.41671 7.30276 3.47817 7.41216 3.58756C7.52155 3.69696 7.58301 3.84533 7.58301 4.00004V7.25854L9.16209 8.83762C9.27145 8.94702 9.33289 9.09536 9.33289 9.25004C9.33289 9.40472 9.27145 9.55307 9.16209 9.66246Z"
+                                    fill="#7E22CE" />
+                            </svg>
+                            <p class="text-[#2C2C2C] text-xs font-normal">1:00 PM</p>
+                        </div>
+                        <div class="space-y-2 max-w-[296px]">
+                            <div class="flex items-center gap-[6px] text-[10px] font-semibold text-[#7E22CE]">
+                                <p>Survival Task</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="5" height="6" viewBox="0 0 5 6"
+                                    fill="none">
+                                    <circle cx="2.5" cy="3" r="2.5" fill="#7E22CE" />
+                                </svg>
+                                <p>Task 1</p>
+                            </div>
+                            <h1 class="text-[#303030] font-bold text-base">Using Public Transportationt</h1>
+                            <p class="text-[#303030] text-xs font-normal">Learn how to read schedules, buy tickets, ask
+                                for directions, and navigate buses or trains confidently.</p>
+                        </div>
+                        <div class="flex items-start gap-[14px]">
+                            <img src="./assets/nick.png" alt="">
+                            <div>
+                                <p class="text-[10px] uppercase font-semibold mb-[6px]">course instructor</p>
+                                <h4 class="text-sm font-semibold uppercase text-[#7E22CE]">Maline Nick</h4>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="px-4 py-2 bg-[#7E22CE] text-white rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Book Now</button>
+                            <button
+                                class="px-4 py-2 border-[1.7px] border-[#F5A800] text-[#F5A800] rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Details</button>
+                        </div>
+                    </div>
+                    <div class=" flex justify-between items-center p-4 bg-white border border-[#E4E4E4] gap-[88px]">
+                        <div class="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15"
+                                fill="none">
+                                <path
+                                    d="M6.99968 1.08337C5.73058 1.08337 4.48998 1.4597 3.43477 2.16478C2.37955 2.86985 1.55711 3.872 1.07145 5.04449C0.585788 6.21698 0.458717 7.50716 0.706305 8.75187C0.953894 9.99658 1.56502 11.1399 2.46241 12.0373C3.3598 12.9347 4.50314 13.5458 5.74785 13.7934C6.99256 14.041 8.28274 13.9139 9.45523 13.4283C10.6277 12.9426 11.6299 12.1202 12.3349 11.065C13.04 10.0097 13.4163 8.76914 13.4163 7.50004C13.4143 5.79885 12.7377 4.16791 11.5347 2.96499C10.3318 1.76207 8.70087 1.08538 6.99968 1.08337ZM9.16209 9.66246C9.0527 9.77182 8.90436 9.83325 8.74968 9.83325C8.595 9.83325 8.44665 9.77182 8.33726 9.66246L6.58726 7.91246C6.47786 7.80309 6.41638 7.65474 6.41634 7.50004V4.00004C6.41634 3.84533 6.4778 3.69696 6.5872 3.58756C6.69659 3.47817 6.84497 3.41671 6.99968 3.41671C7.15439 3.41671 7.30276 3.47817 7.41216 3.58756C7.52155 3.69696 7.58301 3.84533 7.58301 4.00004V7.25854L9.16209 8.83762C9.27145 8.94702 9.33289 9.09536 9.33289 9.25004C9.33289 9.40472 9.27145 9.55307 9.16209 9.66246Z"
+                                    fill="#7E22CE" />
+                            </svg>
+                            <p class="text-[#2C2C2C] text-xs font-normal">1:00 PM</p>
+                        </div>
+                        <div class="space-y-2 max-w-[296px]">
+                            <div class="flex items-center gap-[6px] text-[10px] font-semibold text-[#7E22CE]">
+                                <p>Survival Task</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="5" height="6" viewBox="0 0 5 6"
+                                    fill="none">
+                                    <circle cx="2.5" cy="3" r="2.5" fill="#7E22CE" />
+                                </svg>
+                                <p>Task 1</p>
+                            </div>
+                            <h1 class="text-[#303030] font-bold text-base">Buying Groceries from Supershop </h1>
+                            <p class="text-[#303030] text-xs font-normal">Learn how to find items, ask store employees
+                                for help, compare prices, and complete a purchase efficiently.</p>
+                        </div>
+                        <div class="flex items-start gap-[14px]">
+                            <img src="./assets/jone.png" alt="">
+                            <div>
+                                <p class="text-[10px] uppercase font-semibold mb-[6px]">course instructor</p>
+                                <h4 class="text-sm font-semibold uppercase text-[#7E22CE]">Haris Jone</h4>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="px-4 py-2 bg-[#7E22CE] text-white rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Book Now</button>
+                            <button
+                                class="px-4 py-2 border-[1.7px] border-[#F5A800] text-[#F5A800] rounded-md text-sm font-semibold cursor-pointer"
+                                style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">Details</button>
+                        </div>
+                    </div>
+                    <div class="mt-[38px] flex justify-center mb-[43px]">
+                        <button
+                            class="px-4 py-2 bg-[#7E22CE] text-white rounded-md text-sm font-semibold cursor-pointer"
+                            style="box-shadow: 0px 1px 2px 0px rgba(127, 87, 241, 0.05);">More Task</button>
+                    </div>
+                </div>
+            </div>
     </main>
 </body>
 
