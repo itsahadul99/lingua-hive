@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exact Date Picker with Tailwind</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Flatpickr CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Custom Styles -->
+    <style>
+        .flatpickr-calendar {
+            @apply bg-white rounded-lg shadow-md p-4 w-[406px] absolute top-12 left-0 opacity-0 invisible transition-opacity duration-300 ease-in-out z-10;
+        }
+        .flatpickr-calendar.open {
+            @apply opacity-100 visible;
+        }
+        .flatpickr-month {
+            @apply flex justify-between items-center;
+        }
+        .flatpickr-prev-month, .flatpickr-next-month {
+            @apply text-[#131A29];
+        }
+        .flatpickr-prev-month svg, .flatpickr-next-month svg {
+            @apply w-6 h-6;
+        }
+        .flatpickr-current-month {
+            @apply text-lg font-semibold text-[#131A29];
+        }
+        .flatpickr-weekdays {
+            @apply grid grid-cols-7 gap-2 text-center mt-3 text-gray-500;
+        }
+        .flatpickr-weekday {
+            @apply text-gray-500;
+        }
+        .flatpickr-days {
+            @apply grid grid-cols-7 gap-2 text-center mt-2;
+        }
+        .flatpickr-day {
+            @apply bg-[#F5F5F5] p-2 rounded-md text-[#131A29] text-lg font-semibold cursor-pointer;
+        }
+        .flatpickr-day.selected {
+            @apply bg-[#7E22CE] text-white;
+        }
+        .flatpickr-day.prevMonthDay, .flatpickr-day.nextMonthDay {
+            @apply text-[#C4C4C4] bg-[#F5F5F5];
+        }
+        .flatpickr-day.today {
+            @apply relative;
+        }
+        .flatpickr-day.today::after {
+            content: ".";
+            @apply absolute bottom-0 right-0 text-purple-600;
+        }
+        /* Ensure no default Flatpickr borders interfere */
+        .flatpickr-day {
+            border: none !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="relative group">
+        <input type="text" class="border border-gray-300 rounded-lg p-2" placeholder="Select Date" id="datepicker">
+    </div>
+
+    <!-- Flatpickr JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#datepicker", {
+            defaultDate: "2025-03-15", // Matches your highlighted date
+            minDate: "2025-02-24", // Show Feb 30, 31
+            maxDate: "2025-04-02", // Show April 1, 2
+            static: true, // Keeps calendar in absolute position
+            prevArrow: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 6L9 12L15 18" stroke="#131A29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
+            nextArrow: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#131A29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
+            onReady: function(selectedDates, dateStr, instance) {
+                // Add custom header buttons
+                const header = instance.calendarContainer.querySelector('.flatpickr-month');
+                header.insertAdjacentHTML('beforebegin', `
+                    <div class="flex justify-between items-center mb-4">
+                        <button class="text-purple-600">Select Date</button>
+                        <button class="border border-purple-600 text-purple-600 px-2 py-1 rounded-lg">Reset Date</button>
+                    </div>
+                `);
+                // Reset button functionality
+                const resetBtn = instance.calendarContainer.querySelector('.border');
+                resetBtn.addEventListener('click', () => instance.clear());
+
+                // Force month to "March 2025"
+                instance.currentMonth = 2; // March (0-based index)
+                instance.currentYear = 2025;
+                instance.changeMonth(0, false);
+                instance.redraw();
+
+                // Mark March 24 as today for the dot
+                instance.config._todayDate = new Date("2025-03-24");
+                instance.redraw();
+            },
+            onOpen: function(selectedDates, dateStr, instance) {
+                instance.calendarContainer.classList.add('open');
+            },
+            onClose: function(selectedDates, dateStr, instance) {
+                instance.calendarContainer.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
