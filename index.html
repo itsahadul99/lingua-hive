@@ -210,8 +210,8 @@
                             <div class="relative w-64">
                                 <div class="flex items-center border px-4 py-2 rounded bg-white shadow cursor-pointer"
                                     id="toggleCalendar">
-                                    <input type="text" id="dateInput" class="w-full outline-none"
-                                        placeholder="Date" readonly>
+                                    <input type="text" id="dateInput" class="w-full outline-none" placeholder="Date"
+                                        readonly>
                                     <span class="ml-2">
                                         <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -317,91 +317,80 @@
                                 renderCalendar();
                             </script>
                             <!-- Time Dropdown -->
-                            <div class="group relative w-[377px] flex justify-between items-center px-4 py-2 border border-[#D0D5DD] rounded-md bg-white focus-within:ring-2 focus-within:ring-purple-600"
-                                style="box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);" tabindex="0">
-                                <p class="text-[#667085] font-normal text-base">Time</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                    fill="none">
-                                    <path d="M5 7.5L10 12.5L15 7.5" stroke="#2F234F" stroke-width="1.66667"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                                <!-- Time Picker -->
-                                <div
-                                    class="bg-white rounded-lg shadow-md p-4 w-[406px] absolute top-12 left-0 opacity-0 invisible transition-opacity duration-300 ease-in-out group-focus-within:opacity-100 group-focus-within:visible z-10">
-                                    <div class="flex justify-between items-center">
-                                        <button class="text-purple-600">Select Time</button>
-                                        <button
-                                            class="border border-purple-600 text-purple-600 px-2 py-1 rounded-lg">Reset
-                                            Time</button>
-                                    </div>
-                                    <div class="flex justify-center items-center gap-2 py-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16"
-                                            viewBox="0 0 17 16" fill="none">
-                                            <mask id="mask0_1_1606" style="mask-type:alpha" maskUnits="userSpaceOnUse"
-                                                x="0" y="0" width="17" height="16">
-                                                <rect x="0.5" width="16" height="16" fill="#D9D9D9" />
-                                            </mask>
-                                            <g mask="url(#mask0_1_1606)">
-                                                <path
-                                                    d="M7.83305 2.66663V0.666626H9.16638V2.66663H7.83305ZM7.83305 15.3333V13.3333H9.16638V15.3333H7.83305ZM13.833 8.66663V7.33329H15.833V8.66663H13.833ZM1.16638 8.66663V7.33329H3.16638V8.66663H1.16638ZM12.9664 4.46663L12.033 3.53329L13.1997 2.33329L14.1664 3.29996L12.9664 4.46663ZM3.79972 13.6666L2.83305 12.7L4.03305 11.5333L4.96638 12.4666L3.79972 13.6666ZM13.1997 13.6666L12.033 12.4666L12.9664 11.5333L14.1664 12.7L13.1997 13.6666ZM4.03305 4.46663L2.83305 3.29996L3.79972 2.33329L4.96638 3.53329L4.03305 4.46663ZM8.49971 12C7.3886 12 6.44416 11.6111 5.66638 10.8333C4.8886 10.0555 4.49971 9.11107 4.49971 7.99996C4.49971 6.88885 4.8886 5.9444 5.66638 5.16663C6.44416 4.38885 7.3886 3.99996 8.49971 3.99996C9.61083 3.99996 10.5553 4.38885 11.333 5.16663C12.1108 5.9444 12.4997 6.88885 12.4997 7.99996C12.4997 9.11107 12.1108 10.0555 11.333 10.8333C10.5553 11.6111 9.61083 12 8.49971 12ZM8.49971 10.6666C9.24416 10.6666 9.87471 10.4083 10.3914 9.89163C10.908 9.37496 11.1664 8.7444 11.1664 7.99996C11.1664 7.25551 10.908 6.62496 10.3914 6.10829C9.87471 5.59163 9.24416 5.33329 8.49971 5.33329C7.75527 5.33329 7.12472 5.59163 6.60805 6.10829C6.09138 6.62496 5.83305 7.25551 5.83305 7.99996C5.83305 8.7444 6.09138 9.37496 6.60805 9.89163C7.12472 10.4083 7.75527 10.6666 8.49971 10.6666Z"
-                                                    fill="#1C1B1F" />
-                                            </g>
-                                        </svg>
-                                        Morning
-                                    </div>
-                                    <div
-                                        class="grid grid-cols-6 gap-2 text-center mt-2 *:bg-[#F5F5F5] *:p-2 *:rounded-md text-[#131A29] text-sm font-normal">
-                                        <span>00:00</span><span>01:00</span><span>02:00</span> <span>03:00</span>
-                                        <span>04:00</span>
-                                        <span>05:00</span>
-                                        <span>06:00</span><span>07:00</span> <span>08:00</span> <span>09:00</span> <span
-                                            class="!bg-[#7E22CE] text-white">10:00</span>
-                                        <span>11:00</span>
-                                    </div>
-                                    <div class="flex justify-center items-center gap-2 py-2 my-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            viewBox="0 0 16 16" fill="none">
-                                            <mask id="mask0_1_1640" style="mask-type:alpha" maskUnits="userSpaceOnUse"
-                                                x="0" y="0" width="16" height="16">
-                                                <rect width="16" height="16" fill="#D9D9D9" />
-                                            </mask>
-                                            <g mask="url(#mask0_1_1640)">
-                                                <path
-                                                    d="M8.06671 14.6666C7.13337 14.6666 6.25837 14.4889 5.44171 14.1333C4.62504 13.7778 3.91393 13.2972 3.30837 12.6916C2.70282 12.0861 2.22226 11.375 1.86671 10.5583C1.51115 9.74165 1.33337 8.86665 1.33337 7.93331C1.33337 6.31109 1.85004 4.88054 2.88337 3.64165C3.91671 2.40276 5.23337 1.63331 6.83337 1.33331C6.63337 2.43331 6.69449 3.50831 7.01671 4.55831C7.33893 5.60831 7.89448 6.52776 8.68337 7.31665C9.47226 8.10554 10.3917 8.66109 11.4417 8.98331C12.4917 9.30553 13.5667 9.36665 14.6667 9.16665C14.3778 10.7666 13.6112 12.0833 12.3667 13.1166C11.1223 14.15 9.68893 14.6666 8.06671 14.6666ZM8.06671 13.3333C9.04449 13.3333 9.95004 13.0889 10.7834 12.6C11.6167 12.1111 12.2723 11.4389 12.75 10.5833C11.7945 10.4944 10.8889 10.2528 10.0334 9.85831C9.17782 9.46387 8.41115 8.92776 7.73337 8.24998C7.0556 7.5722 6.51671 6.80553 6.11671 5.94998C5.71671 5.09442 5.47782 4.18887 5.40004 3.23331C4.54448 3.71109 3.87504 4.36942 3.39171 5.20831C2.90837 6.0472 2.66671 6.95554 2.66671 7.93331C2.66671 9.43331 3.19171 10.7083 4.24171 11.7583C5.29171 12.8083 6.56671 13.3333 8.06671 13.3333Z"
-                                                    fill="#1C1B1F" />
-                                            </g>
-                                        </svg>
-                                        After noon/Evening
-                                    </div>
-                                    <div
-                                        class="grid grid-cols-6 gap-2 text-center mt-2 *:bg-[#F5F5F5] *:p-2 *:rounded-md text-[#131A29] text-sm font-normal">
-                                        <span>00:00</span><span class="!bg-[#7E22CE] text-white">01:00</span><span
-                                            class="!bg-[#7E22CE] text-white">02:00</span> <span>03:00</span> <span
-                                            class="!bg-[#7E22CE] text-white">04:00</span>
-                                        <span>05:00</span>
-                                        <span>06:00</span><span>07:00</span> <span>08:00</span> <span>09:00</span>
-                                        <span>10:00</span>
-                                        <span>11:00</span>
-                                    </div>
-                                    <div class="mt-5 flex justify-center gap-5">
-                                        <button
-                                            class="px-5 py-2 rounded-lg border border-[#7E22CE] text-sm text-black font-semibold bg-[#7E22CE66] cursor-pointer">
-                                            Exact Time
-                                        </button>
-                                        <button
-                                            class="px-5 py-2 rounded-lg border border-[#7E22CE] text-[#7E22CE] text-sm font-semibold flex items-center gap-1 cursor-pointer">
-                                            <img src="./assets/plusMinus.png" alt="">
-                                            1 hour
-                                        </button>
-                                        <button
-                                            class="px-5 py-2 rounded-lg border border-[#7E22CE] text-[#7E22CE] text-sm font-semibold flex items-center gap-1 cursor-pointer">
-                                            <img src="./assets/plusMinus.png" alt="">
-                                            2 hour
-                                        </button>
+                            <div class="relative w-96">
+                                <div class="group relative w-full flex justify-between items-center px-4 py-2 border border-gray-300 rounded-md bg-white focus-within:ring-2 focus-within:ring-purple-600 cursor-pointer" tabindex="0">
+                                    <p id="selected-time" class="text-gray-600 font-normal text-base">Select Time</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M5 7.5L10 12.5L15 7.5" stroke="#2F234F" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                            
+                                    <div class="bg-white rounded-lg shadow-md p-4 w-full absolute top-12 left-0 opacity-0 invisible transition-opacity duration-300 ease-in-out group-focus-within:opacity-100 group-focus-within:visible z-10">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <button class="text-purple-600 font-semibold">Select Time</button>
+                                            <button id="reset-btn" class="border border-purple-600 text-purple-600 px-2 py-1 rounded-lg">Reset Time</button>
+                                        </div>
+                                        <div class="text-center text-gray-700 font-semibold">☀ Morning</div>
+                                        <div id="morning-times" class="grid grid-cols-6 gap-2 text-center mt-2 text-gray-900 text-sm font-normal">
+                                        </div>
+                                        <div class="text-center text-gray-700 font-semibold mt-4">🌙 After Noon/Evening</div>
+                                        <div id="evening-times" class="grid grid-cols-6 gap-2 text-center mt-2 text-gray-900 text-sm font-normal">
+                                        </div>
+                                        <div class="mt-5 flex justify-center gap-5">
+                                            <button class="clickable-btn px-5 py-2 rounded-lg border border-purple-600 bg-purple-100 text-purple-700 text-sm font-semibold cursor-pointer">Exact Time</button>
+                                            <button class="clickable-btn px-5 py-2 rounded-lg border border-purple-600 text-purple-700 text-sm font-semibold cursor-pointer">± 1 hour</button>
+                                            <button class="clickable-btn px-5 py-2 rounded-lg border border-purple-600 text-purple-700 text-sm font-semibold cursor-pointer">± 2 hour</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            
+                            <script>
+                                const morningTimes = document.getElementById("morning-times");
+                                const eveningTimes = document.getElementById("evening-times");
+                                const resetBtn = document.getElementById("reset-btn");
+                                const selectedTimeDisplay = document.getElementById("selected-time");
+                                let selectedTimes = [];
+                            
+                                function createTimeSlots(container, times, period) {
+                                    times.forEach(time => {
+                                        const span = document.createElement("span");
+                                        span.textContent = time;
+                                        span.classList.add("bg-gray-200", "p-2", "rounded-md", "cursor-pointer", "hover:bg-gray-300");
+                                        span.addEventListener("click", () => {
+                                            $(span).toggleClass("bg-purple-600 text-white");
+                            
+                                            const formattedTime = `${time} ${period}`;
+                                            if ($(span).hasClass("bg-purple-600")) {
+                                                selectedTimes.push(formattedTime);
+                                            } else {
+                                                selectedTimes = selectedTimes.filter(t => t !== formattedTime);
+                                            }
+                            
+                                            const formattedSelection = selectedTimes.map(time => `${time}`).join(", ");
+                                            selectedTimeDisplay.textContent = formattedSelection || "Select Time";
+                                        });
+                                        container.appendChild(span);
+                                    });
+                                }
+                            
+                                createTimeSlots(morningTimes, ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"], "AM");
+                                createTimeSlots(eveningTimes, ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"], "PM");
+                            
+                                resetBtn.addEventListener("click", () => {
+                                    $("span.bg-purple-600").removeClass("bg-purple-600 text-white");
+                                    selectedTimes = [];
+                                    selectedTimeDisplay.textContent = "Select Time";
+                                });
+                            
+                                // Update clickable buttons to change color to #7E22CE on click
+                                $(document).on('click', '.clickable-btn', function() {
+                                    $(this).css("background-color", "#7E22CE");
+                                    $(this).css("color", "#ffffff");
+                                    $(this).siblings().css("background-color", ""); // Reset the other buttons
+                                    $(this).siblings().css("color", ""); // Reset the other buttons
+                                });
+                            </script>
+
                         </div>
                         <!-- Buttons -->
                         <div class="flex gap-2 w-full md:w-auto">
