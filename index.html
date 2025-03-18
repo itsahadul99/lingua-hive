@@ -5,8 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lingua Hive</title>
+
+
     <!-- Tailwind Css -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- for calender -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
@@ -201,65 +207,81 @@
                     <div class="flex gap-3">
                         <div class="flex flex-1 gap-3">
                             <!-- Date Dropdown -->
-                            <div class="group relative w-[377px] flex justify-between items-center px-4 py-2 border border-[#D0D5DD] rounded-md bg-white focus-within:ring-2 focus-within:ring-purple-600"
-                                style="box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);" tabindex="0">
-                                <p class="text-[#667085] font-normal text-base">Date</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                    fill="none">
-                                    <path d="M5 7.5L10 12.5L15 7.5" stroke="#2F234F" stroke-width="1.66667"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                <!-- Date Picker -->
-                                <div
-                                    class="bg-white rounded-lg shadow-md p-4 w-[406px] absolute top-12 left-0 opacity-0 invisible transition-opacity duration-300 ease-in-out group-focus-within:opacity-100 group-focus-within:visible z-10">
-                                    <div class="flex justify-between items-center mb-4">
-                                        <button class="text-purple-600">Select Date</button>
-                                        <button
-                                            class="border border-purple-600 text-purple-600 px-2 py-1 rounded-lg">Reset
-                                            Date</button>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path d="M15 6L9 12L15 18" stroke="#131A29" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </button>
-                                        <span class="text-lg font-semibold">March 2025</span>
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path d="M9 6L15 12L9 18" stroke="#131A29" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="grid grid-cols-7 gap-2 text-center mt-3 text-gray-500">
-                                        <span>Mo</span> <span>Tu</span> <span>We</span> <span>Th</span> <span>Fr</span>
-                                        <span>Sa</span> <span>Su</span>
-                                    </div>
-                                    <div
-                                        class="grid grid-cols-7 gap-2 text-center mt-2 *:bg-[#F5F5F5] *:p-2 *:rounded-md text-[#131A29] text-lg font-semibold *:cursor-pointer *:date-field">
-                                        <span class="text-[#C4C4C4]">30</span>
-                                        <span class="text-[#C4C4C4]">31</span>
-                                        <span>1</span> <span>2</span> <span>3</span> <span
-                                            class="font-semibold">4</span>
-                                        <span>5</span>
-                                        <span>6</span> <span>7</span> <span>8</span> <span>9</span> <span>10</span>
-                                        <span>11</span> <span>12</span>
-                                        <span>13</span> <span>14</span> <span class="!bg-[#7E22CE] text-white">15</span>
-                                        <span>16</span> <span>17</span> <span>18</span> <span>19</span>
-                                        <span>20</span> <span>21</span> <span>22</span> <span>23</span>
-                                        <span class="relative">24<span
-                                                class="absolute bottom-0 right-0 text-purple-600">.</span></span>
-                                        <span>25</span> <span>26</span>
-                                        <span>27</span> <span>28</span> <span>29</span> <span>30</span> <span>31</span>
-                                        <span class="text-[#C4C4C4]">1</span> <span class="text-[#C4C4C4]">2</span>
-                                    </div>
+                            <div class="relative w-64">
+                                <div class="flex items-center border px-4 py-2 rounded bg-white shadow cursor-pointer" id="toggleCalendar">
+                                  <input type="text" id="dateInput" class="w-full outline-none" placeholder="Select Date" readonly>
+                                  <span class="ml-2">▼</span>
                                 </div>
-                            </div>
-
+                                <div id="calendarContainer" class="absolute top-12 left-0 bg-white shadow-lg rounded-lg p-4 w-80 hidden">
+                                  <div class="flex justify-between items-center text-blue-600 text-sm pb-2 border-b">
+                                    <button id="resetDate" class="border px-3 py-1 rounded bg-red-500 text-white">Reset</button>
+                                    <button id="prevMonth" class="border px-2 py-1 rounded">◀</button>
+                                    <div class="text-center font-semibold text-lg" id="monthYear"></div>
+                                    <button id="nextMonth" class="border px-2 py-1 rounded">▶</button>
+                                  </div>
+                                  <div class="grid grid-cols-7 text-center text-gray-600 mt-2">
+                                    <div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div><div>Su</div>
+                                  </div>
+                                  <div id="calendar" class="grid grid-cols-7 gap-1 text-center mt-2"></div>
+                                </div>
+                              </div>
+                            
+                              <script>
+                                const toggleCalendar = document.getElementById('toggleCalendar');
+                                const dateInput = document.getElementById('dateInput');
+                                const calendarContainer = document.getElementById('calendarContainer');
+                                const monthYear = document.getElementById('monthYear');
+                                const calendar = document.getElementById('calendar');
+                                const prevMonth = document.getElementById('prevMonth');
+                                const nextMonth = document.getElementById('nextMonth');
+                                const resetDate = document.getElementById('resetDate');
+                                let date = new Date();
+                                let selectedDate = null;
+                                
+                                function renderCalendar() {
+                                  calendar.innerHTML = '';
+                                  let firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+                                  let lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+                                  monthYear.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+                                  
+                                  for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
+                                    calendar.innerHTML += '<div></div>';
+                                  }
+                                  
+                                  for (let day = 1; day <= lastDate; day++) {
+                                    calendar.innerHTML += `<div class="p-2 cursor-pointer hover:bg-blue-200 rounded ${selectedDate === day ? 'bg-purple-500 text-white' : ''}" onclick="selectDate(${day})">${day}</div>`;
+                                  }
+                                }
+                            
+                                function selectDate(day) {
+                                  selectedDate = day;
+                                  dateInput.value = `${day} ${date.toLocaleString('default', { month: 'long', year: 'numeric' })}`;
+                                  calendarContainer.classList.add('hidden');
+                                  renderCalendar();
+                                }
+                            
+                                toggleCalendar.addEventListener('click', () => {
+                                  calendarContainer.classList.toggle('hidden');
+                                });
+                            
+                                prevMonth.addEventListener('click', () => {
+                                  date.setMonth(date.getMonth() - 1);
+                                  renderCalendar();
+                                });
+                            
+                                nextMonth.addEventListener('click', () => {
+                                  date.setMonth(date.getMonth() + 1);
+                                  renderCalendar();
+                                });
+                            
+                                resetDate.addEventListener('click', () => {
+                                  selectedDate = null;
+                                  dateInput.value = '';
+                                  renderCalendar();
+                                });
+                            
+                                renderCalendar();
+                              </script>
                             <!-- Time Dropdown -->
                             <div class="group relative w-[377px] flex justify-between items-center px-4 py-2 border border-[#D0D5DD] rounded-md bg-white focus-within:ring-2 focus-within:ring-purple-600"
                                 style="box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);" tabindex="0">
