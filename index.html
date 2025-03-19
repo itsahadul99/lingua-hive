@@ -77,7 +77,6 @@
                         <p>Survival Task</p>
                         <script>
                             const survivalTask = document.getElementById("survivalTask").addEventListener("click",(e)=>{
-                                console.log("Checked status:", e.target.checked);
                                 if(e.target.checked){
                                     document.getElementById("survivalTaskDiv").classList.remove("hidden");
                                 } else{
@@ -88,14 +87,35 @@
                         </script>
                     </div>
                     <div class="flex items-center gap-[10px] text-[#151515] text-sm font-normal">
-                        <input value="businessTask" class="size-6" style="accent-color: #7E22CE;" type="checkbox"
+                        <input value="businessTask" class="size-6" style="accent-color: #7E22CE;" id="businessTask" type="checkbox"
                             class="mr-2">
                         <p>Business Task</p>
+                        <script>
+                            const businessTask = document.getElementById("businessTask").addEventListener("click",(e)=>{
+                                console.log("Checked status:", e.target.checked);
+                                if(e.target.checked){
+                                    document.getElementById("businessTaskDiv").classList.remove("hidden");
+                                } else{
+                                    document.getElementById("businessTaskDiv").classList.add("hidden");
+                                }
+                            })
+
+                        </script>
                     </div>
                     <div class="flex items-center gap-[10px] text-[#151515] text-sm font-normal">
-                        <input value="socialTask" class="size-6" style="accent-color: #7E22CE;" type="checkbox"
+                        <input value="socialTask" class="size-6" style="accent-color: #7E22CE;" id="socialTask" type="checkbox"
                             class="mr-2">
                         <p>Social Task</p>
+                        <script>
+                            const socialTask = document.getElementById("socialTask").addEventListener("click",(e)=>{
+                                if(e.target.checked){
+                                    document.getElementById("socialTaskDiv").classList.remove("hidden");
+                                } else{
+                                    document.getElementById("socialTaskDiv").classList.add("hidden");
+                                }
+                            })
+
+                        </script>
                     </div>
                 </div>
                 <div class="mt-[22px]">
@@ -125,70 +145,238 @@
                             </svg>
                         </div>
                         <div class="flex items-center gap-[10px]">
-                            <input value="task1" class="size-6" style="accent-color: #7E22CE;" checked type="radio">
+                            <input value="task1" class="size-6" style="accent-color: #7E22CE;" name="socialTask" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 1</p>
                                 <p class="text-[#151515] text-sm font-normal">Visiting a Doctor’s Office</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-[10px]">
-                            <input value="task2" style="accent-color: #7E22CE;" class="size-6" type="radio">
+                            <input value="task2" style="accent-color: #7E22CE;" name="socialTask" class="size-6" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 2</p>
                                 <p class="text-[#151515] text-sm font-normal">Dinning in at a restaurant</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-[10px]">
-                            <input value="task3" style="accent-color: #7E22CE;" class="size-6" type="radio">
+                            <input value="task3" style="accent-color: #7E22CE;" name="socialTask" class="size-6" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 3</p>
                                 <p class="text-[#151515] text-sm font-normal">Buying Groceries</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-[10px]">
-                            <input value="task4" style="accent-color: #7E22CE;" class="size-6" type="radio">
+                            <input value="task4" style="accent-color: #7E22CE;" name="socialTask" class="size-6" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 4</p>
                                 <p class="text-[#151515] text-sm font-normal">Emergency Situations</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-[10px]">
-                            <input value="task5" style="accent-color: #7E22CE;" class="size-6" type="radio">
+                            <input value="task5" style="accent-color: #7E22CE;" name="socialTask" class="size-6" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 5</p>
                                 <p class="text-[#151515] text-sm font-normal">At the Pharmacy</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-[10px]">
-                            <input value="task6" style="accent-color: #7E22CE;" class="size-6" type="radio">
+                            <input value="task6" style="accent-color: #7E22CE;" name="socialTask" class="size-6" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 6</p>
                                 <p class="text-[#151515] text-sm font-normal">Reporting a Lost Item</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-[10px]">
-                            <input value="task7" style="accent-color: #7E22CE;" class="size-6" type="radio">
+                            <input value="task7" style="accent-color: #7E22CE;" name="socialTask" class="size-6" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 7</p>
                                 <p class="text-[#151515] text-sm font-normal">Using an ATM</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-[10px]">
-                            <input value="task8" style="accent-color: #7E22CE;" class="size-6" type="radio">
+                            <input value="task8" style="accent-color: #7E22CE;" name="socialTask" class="size-6" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 8</p>
                                 <p class="text-[#151515] text-sm font-normal">Booking a Hotel Room</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-[10px]">
-                            <input value="task9" style="accent-color: #7E22CE;" class="size-6" type="radio">
+                            <input value="task9" style="accent-color: #7E22CE;" name="socialTask" class="size-6" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 9</p>
                                 <p class="text-[#151515] text-sm font-normal">Using Public Transportation</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-[10px] mb-5">
-                            <input value="task10" style="accent-color: #7E22CE;" class="size-6" type="radio">
+                            <input value="task10" style="accent-color: #7E22CE;" name="socialTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 10</p>
+                                <p class="text-[#151515] text-sm font-normal">Asking for Directions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="businessTaskDiv" name="courseTask" class="hidden w-full px-[14px] py-[10px] mt-2 space-y-[10px]"
+                        style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-[#7E22CE] font-semibold text-sm">Business Task</p>
+                                <p class="mt-1 text-xs text-[#151515A6]">10 Tasks</p>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <path d="M15 12.5L10 7.5L5 12.5" stroke="#2F234F" stroke-width="1.66667"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task1" class="size-6" style="accent-color: #7E22CE;" name="survivalTask" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 1</p>
+                                <p class="text-[#151515] text-sm font-normal">Visiting a Doctor’s Office</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task2" style="accent-color: #7E22CE;" name="survivalTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 2</p>
+                                <p class="text-[#151515] text-sm font-normal">Dinning in at a restaurant</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task3" style="accent-color: #7E22CE;" name="survivalTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 3</p>
+                                <p class="text-[#151515] text-sm font-normal">Buying Groceries</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task4" style="accent-color: #7E22CE;" name="survivalTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 4</p>
+                                <p class="text-[#151515] text-sm font-normal">Emergency Situations</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task5" style="accent-color: #7E22CE;" name="survivalTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 5</p>
+                                <p class="text-[#151515] text-sm font-normal">At the Pharmacy</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task6" style="accent-color: #7E22CE;" name="survivalTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 6</p>
+                                <p class="text-[#151515] text-sm font-normal">Reporting a Lost Item</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task7" style="accent-color: #7E22CE;" name="survivalTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 7</p>
+                                <p class="text-[#151515] text-sm font-normal">Using an ATM</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task8" style="accent-color: #7E22CE;" name="survivalTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 8</p>
+                                <p class="text-[#151515] text-sm font-normal">Booking a Hotel Room</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task9" style="accent-color: #7E22CE;" name="survivalTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 9</p>
+                                <p class="text-[#151515] text-sm font-normal">Using Public Transportation</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px] mb-5">
+                            <input value="task10" style="accent-color: #7E22CE;" name="survivalTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 10</p>
+                                <p class="text-[#151515] text-sm font-normal">Asking for Directions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="socialTaskDiv" name="courseTask" class="hidden w-full px-[14px] py-[10px] mt-2 space-y-[10px]"
+                        style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-[#7E22CE] font-semibold text-sm">Social Task</p>
+                                <p class="mt-1 text-xs text-[#151515A6]">10 Tasks</p>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <path d="M15 12.5L10 7.5L5 12.5" stroke="#2F234F" stroke-width="1.66667"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task1" class="size-6" style="accent-color: #7E22CE;" name="businessTask" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 1</p>
+                                <p class="text-[#151515] text-sm font-normal">Visiting a Doctor’s Office</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task2" style="accent-color: #7E22CE;" name="businessTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 2</p>
+                                <p class="text-[#151515] text-sm font-normal">Dinning in at a restaurant</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task3" style="accent-color: #7E22CE;" name="businessTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 3</p>
+                                <p class="text-[#151515] text-sm font-normal">Buying Groceries</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task4" style="accent-color: #7E22CE;" name="businessTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 4</p>
+                                <p class="text-[#151515] text-sm font-normal">Emergency Situations</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task5" style="accent-color: #7E22CE;" name="businessTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 5</p>
+                                <p class="text-[#151515] text-sm font-normal">At the Pharmacy</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task6" style="accent-color: #7E22CE;" name="businessTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 6</p>
+                                <p class="text-[#151515] text-sm font-normal">Reporting a Lost Item</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task7" style="accent-color: #7E22CE;" name="businessTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 7</p>
+                                <p class="text-[#151515] text-sm font-normal">Using an ATM</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task8" style="accent-color: #7E22CE;" name="businessTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 8</p>
+                                <p class="text-[#151515] text-sm font-normal">Booking a Hotel Room</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px]">
+                            <input value="task9" style="accent-color: #7E22CE;" name="businessTask" class="size-6" type="radio">
+                            <div>
+                                <p class="text-[#15151566] text-[10px] font-normal">Task 9</p>
+                                <p class="text-[#151515] text-sm font-normal">Using Public Transportation</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-[10px] mb-5">
+                            <input value="task10" style="accent-color: #7E22CE;" name="businessTask" class="size-6" type="radio">
                             <div>
                                 <p class="text-[#15151566] text-[10px] font-normal">Task 10</p>
                                 <p class="text-[#151515] text-sm font-normal">Asking for Directions</p>
