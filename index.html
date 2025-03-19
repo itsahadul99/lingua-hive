@@ -211,7 +211,7 @@
                                 <div class=" relative w-full">
                                     <div class="flex items-center border px-4 py-2 rounded bg-white shadow cursor-pointer"
                                         id="toggleCalendar">
-                                        <input type="text" id="dateInput" class="w-full outline-none" placeholder="Date"
+                                        <input type="text" id="dateInput" class="w-full outline-none  border border-gray-300" placeholder="Date"
                                             readonly>
                                         <span class="ml-2">
                                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
@@ -222,7 +222,7 @@
                                         </span>
                                     </div>
                                     <div id="calendarContainer"
-                                        class="absolute top-12 left-0 bg-white shadow-lg rounded-lg p-5 w-80 hidden">
+                                        class="absolute top-12 left-0 bg-white shadow-lg rounded-lg p-5 w-full hidden">
                                         <div class="flex justify-between items-center">
                                             <p class="text-[#7E22CE]">Select Date</p>
                                             <button id="resetDate"
@@ -332,7 +332,7 @@
                             <!-- Time Dropdown -->
                             <div class="w-full">
                                 <div class="relative w-full ">
-                                    <div class="group relative w-full flex justify-between items-center px-4 py-2 border border-gray-300 rounded-md bg-white focus-within:ring-2 focus-within:ring-purple-600 cursor-pointer"
+                                    <div class="group relative w-full flex justify-between items-center px-4 py-2 border border-gray-300 rounded-md bg-white focus-within:ring-2  cursor-pointer"
                                         tabindex="0">
                                         <p id="selected-time" class="text-gray-600 font-normal text-base">Time</p>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
