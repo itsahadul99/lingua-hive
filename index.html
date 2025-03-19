@@ -227,8 +227,8 @@
                                             <p class="text-[#7E22CE]">Select Date</p>
                                             <button id="resetDate"
                                                 class="border-1 border-[#7E22CE] text-[#7E22CE] px-3 py-1 rounded-lg  ">
-                                                Reset
-                                                Date</button>
+                                                Reset Date
+                                            </button>
 
                                         </div>
                                         <div class="flex justify-between items-center text-blue-600 text-sm pb-2 my-5">
@@ -317,7 +317,17 @@
                                     });
 
                                     renderCalendar();
+
+      
+
+                                    // Close calendar when clicking outside
+                                    document.addEventListener('click', (event) => {
+                                        if (!calendarContainer.contains(event.target) && !toggleCalendar.contains(event.target)) {
+                                            calendarContainer.classList.add('hidden');
+                                        }
+                                    });
                                 </script>
+
                             </div>
                             <!-- Time Dropdown -->
                             <div class="w-full">
