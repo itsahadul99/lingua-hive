@@ -204,196 +204,216 @@
                         <h2 class="text-xl  font-semibold text-[#2F234F]">Search your Classes</h2>
                     </div>
 
-                    <div class="flex gap-3">
-                        <div class="flex flex-1 gap-3">
+                    <div class="flex  gap-5">
+                        <div class="flex flex-1 gap-5">
                             <!-- Date Dropdown -->
-                            <div class="relative w-64">
-                                <div class="flex items-center border px-4 py-2 rounded bg-white shadow cursor-pointer"
-                                    id="toggleCalendar">
-                                    <input type="text" id="dateInput" class="w-full outline-none" placeholder="Date"
-                                        readonly>
-                                    <span class="ml-2">
-                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 1L7 7L13 1" stroke="#131A29" stroke-width="2"
+                            <div class="w-full">
+                                <div class=" relative w-full">
+                                    <div class="flex items-center border px-4 py-2 rounded bg-white shadow cursor-pointer"
+                                        id="toggleCalendar">
+                                        <input type="text" id="dateInput" class="w-full outline-none" placeholder="Date"
+                                            readonly>
+                                        <span class="ml-2">
+                                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 1L7 7L13 1" stroke="#131A29" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div id="calendarContainer"
+                                        class="absolute top-12 left-0 bg-white shadow-lg rounded-lg p-5 w-80 hidden">
+                                        <div class="flex justify-between items-center">
+                                            <p class="text-[#7E22CE]">Select Date</p>
+                                            <button id="resetDate"
+                                                class="border-1 border-[#7E22CE] text-[#7E22CE] px-3 py-1 rounded-lg  ">
+                                                Reset
+                                                Date</button>
+
+                                        </div>
+                                        <div class="flex justify-between items-center text-blue-600 text-sm pb-2 my-5">
+                                            <button id="prevMonth" class=" px-2 py-1 rounded"><svg width="8" height="14"
+                                                    viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7 1L1 7L7 13" stroke="#131A29" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+                                            <div class="text-center font-medium text-lg text-black" id="monthYear">
+                                            </div>
+                                            <button id="nextMonth" class=" px-2 py-1 rounded">
+                                                <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 1L7 7L1 13" stroke="#131A29" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+
+                                            </button>
+                                        </div>
+                                        <div class="grid grid-cols-7 text-center text-gray-600 mt-2">
+                                            <div>Mo</div>
+                                            <div>Tu</div>
+                                            <div>We</div>
+                                            <div>Th</div>
+                                            <div>Fr</div>
+                                            <div>Sa</div>
+                                            <div>Su</div>
+                                        </div>
+                                        <div id="calendar" class="grid grid-cols-7 gap-1 text-center mt-2"></div>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    const toggleCalendar = document.getElementById('toggleCalendar');
+                                    const dateInput = document.getElementById('dateInput');
+                                    const calendarContainer = document.getElementById('calendarContainer');
+                                    const monthYear = document.getElementById('monthYear');
+                                    const calendar = document.getElementById('calendar');
+                                    const prevMonth = document.getElementById('prevMonth');
+                                    const nextMonth = document.getElementById('nextMonth');
+                                    const resetDate = document.getElementById('resetDate');
+                                    let date = new Date();
+                                    let selectedDate = null;
+
+                                    function renderCalendar() {
+                                        calendar.innerHTML = '';
+                                        let firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+                                        let lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+                                        monthYear.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+                                        for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
+                                            calendar.innerHTML += '<div></div>';
+                                        }
+
+                                        for (let day = 1; day <= lastDate; day++) {
+                                            calendar.innerHTML += `<div class="p-2 cursor-pointer hover:bg-blue-200 rounded ${selectedDate === day ? 'bg-purple-500 text-white' : ''}" onclick="selectDate(${day})">${day}</div>`;
+                                        }
+                                    }
+
+                                    function selectDate(day) {
+                                        selectedDate = day;
+                                        dateInput.value = `${day} ${date.toLocaleString('default', { month: 'long', year: 'numeric' })}`;
+                                        calendarContainer.classList.add('hidden');
+                                        renderCalendar();
+                                    }
+
+                                    toggleCalendar.addEventListener('click', () => {
+                                        calendarContainer.classList.toggle('hidden');
+                                    });
+
+                                    prevMonth.addEventListener('click', () => {
+                                        date.setMonth(date.getMonth() - 1);
+                                        renderCalendar();
+                                    });
+
+                                    nextMonth.addEventListener('click', () => {
+                                        date.setMonth(date.getMonth() + 1);
+                                        renderCalendar();
+                                    });
+
+                                    resetDate.addEventListener('click', () => {
+                                        selectedDate = null;
+                                        dateInput.value = '';
+                                        renderCalendar();
+                                    });
+
+                                    renderCalendar();
+                                </script>
+                            </div>
+                            <!-- Time Dropdown -->
+                            <div class="w-full">
+                                <div class="relative w-full ">
+                                    <div class="group relative w-full flex justify-between items-center px-4 py-2 border border-gray-300 rounded-md bg-white focus-within:ring-2 focus-within:ring-purple-600 cursor-pointer"
+                                        tabindex="0">
+                                        <p id="selected-time" class="text-gray-600 font-normal text-base">Time</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20" fill="none">
+                                            <path d="M5 7.5L10 12.5L15 7.5" stroke="#2F234F" stroke-width="1.66667"
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
-                                    </span>
-                                </div>
-                                <div id="calendarContainer"
-                                    class="absolute top-12 left-0 bg-white shadow-lg rounded-lg p-5 w-80 hidden">
-                                    <div class="flex justify-between items-center">
-                                        <p class="text-[#7E22CE]">Select Date</p>
-                                        <button id="resetDate"
-                                            class="border-1 border-[#7E22CE] text-[#7E22CE] px-3 py-1 rounded-lg  ">
-                                            Reset
-                                            Date</button>
 
-                                    </div>
-                                    <div class="flex justify-between items-center text-blue-600 text-sm pb-2 my-5">
-                                        <button id="prevMonth" class=" px-2 py-1 rounded"><svg width="8" height="14"
-                                                viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7 1L1 7L7 13" stroke="#131A29" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </button>
-                                        <div class="text-center font-medium text-lg text-black" id="monthYear"></div>
-                                        <button id="nextMonth" class=" px-2 py-1 rounded">
-                                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 1L7 7L1 13" stroke="#131A29" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-
-                                        </button>
-                                    </div>
-                                    <div class="grid grid-cols-7 text-center text-gray-600 mt-2">
-                                        <div>Mo</div>
-                                        <div>Tu</div>
-                                        <div>We</div>
-                                        <div>Th</div>
-                                        <div>Fr</div>
-                                        <div>Sa</div>
-                                        <div>Su</div>
-                                    </div>
-                                    <div id="calendar" class="grid grid-cols-7 gap-1 text-center mt-2"></div>
-                                </div>
-                            </div>
-
-                            <script>
-                                const toggleCalendar = document.getElementById('toggleCalendar');
-                                const dateInput = document.getElementById('dateInput');
-                                const calendarContainer = document.getElementById('calendarContainer');
-                                const monthYear = document.getElementById('monthYear');
-                                const calendar = document.getElementById('calendar');
-                                const prevMonth = document.getElementById('prevMonth');
-                                const nextMonth = document.getElementById('nextMonth');
-                                const resetDate = document.getElementById('resetDate');
-                                let date = new Date();
-                                let selectedDate = null;
-
-                                function renderCalendar() {
-                                    calendar.innerHTML = '';
-                                    let firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-                                    let lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-                                    monthYear.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
-
-                                    for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
-                                        calendar.innerHTML += '<div></div>';
-                                    }
-
-                                    for (let day = 1; day <= lastDate; day++) {
-                                        calendar.innerHTML += `<div class="p-2 cursor-pointer hover:bg-blue-200 rounded ${selectedDate === day ? 'bg-purple-500 text-white' : ''}" onclick="selectDate(${day})">${day}</div>`;
-                                    }
-                                }
-
-                                function selectDate(day) {
-                                    selectedDate = day;
-                                    dateInput.value = `${day} ${date.toLocaleString('default', { month: 'long', year: 'numeric' })}`;
-                                    calendarContainer.classList.add('hidden');
-                                    renderCalendar();
-                                }
-
-                                toggleCalendar.addEventListener('click', () => {
-                                    calendarContainer.classList.toggle('hidden');
-                                });
-
-                                prevMonth.addEventListener('click', () => {
-                                    date.setMonth(date.getMonth() - 1);
-                                    renderCalendar();
-                                });
-
-                                nextMonth.addEventListener('click', () => {
-                                    date.setMonth(date.getMonth() + 1);
-                                    renderCalendar();
-                                });
-
-                                resetDate.addEventListener('click', () => {
-                                    selectedDate = null;
-                                    dateInput.value = '';
-                                    renderCalendar();
-                                });
-
-                                renderCalendar();
-                            </script>
-                            <!-- Time Dropdown -->
-                            <div class="relative w-96">
-                                <div class="group relative w-full flex justify-between items-center px-4 py-2 border border-gray-300 rounded-md bg-white focus-within:ring-2 focus-within:ring-purple-600 cursor-pointer" tabindex="0">
-                                    <p id="selected-time" class="text-gray-600 font-normal text-base">Select Time</p>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                        <path d="M5 7.5L10 12.5L15 7.5" stroke="#2F234F" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                            
-                                    <div class="bg-white rounded-lg shadow-md p-4 w-full absolute top-12 left-0 opacity-0 invisible transition-opacity duration-300 ease-in-out group-focus-within:opacity-100 group-focus-within:visible z-10">
-                                        <div class="flex justify-between items-center mb-2">
-                                            <button class="text-purple-600 font-semibold">Select Time</button>
-                                            <button id="reset-btn" class="border border-purple-600 text-purple-600 px-2 py-1 rounded-lg">Reset Time</button>
-                                        </div>
-                                        <div class="text-center text-gray-700 font-semibold">☀ Morning</div>
-                                        <div id="morning-times" class="grid grid-cols-6 gap-2 text-center mt-2 text-gray-900 text-sm font-normal">
-                                        </div>
-                                        <div class="text-center text-gray-700 font-semibold mt-4">🌙 After Noon/Evening</div>
-                                        <div id="evening-times" class="grid grid-cols-6 gap-2 text-center mt-2 text-gray-900 text-sm font-normal">
-                                        </div>
-                                        <div class="mt-5 flex justify-center gap-5">
-                                            <button class="clickable-btn px-5 py-2 rounded-lg border border-purple-600 bg-purple-100 text-purple-700 text-sm font-semibold cursor-pointer">Exact Time</button>
-                                            <button class="clickable-btn px-5 py-2 rounded-lg border border-purple-600 text-purple-700 text-sm font-semibold cursor-pointer">± 1 hour</button>
-                                            <button class="clickable-btn px-5 py-2 rounded-lg border border-purple-600 text-purple-700 text-sm font-semibold cursor-pointer">± 2 hour</button>
+                                        <div
+                                            class="bg-white rounded-lg shadow-md p-4 w-full absolute top-12 left-0 opacity-0 invisible transition-opacity duration-300 ease-in-out group-focus-within:opacity-100 group-focus-within:visible z-10">
+                                            <div class="flex justify-between items-center mb-2">
+                                                <p class="text-[#7E22CE]">Select Time</p>
+                                                <button id="reset-btn"
+                                                    class="border border-purple-600 text-purple-600 px-2 py-1 rounded-lg">Reset
+                                                    Time</button>
+                                            </div>
+                                            <div class="text-center text-gray-700 font-semibold">☀ Morning</div>
+                                            <div id="morning-times"
+                                                class="grid grid-cols-6 gap-2 text-center mt-2 text-gray-900 text-sm font-normal">
+                                            </div>
+                                            <div class="text-center text-gray-700 font-semibold mt-4">🌙 After
+                                                Noon/Evening</div>
+                                            <div id="evening-times"
+                                                class="grid grid-cols-6 gap-2 text-center mt-2 text-gray-900 text-sm font-normal">
+                                            </div>
+                                            <div class="mt-5 flex justify-center gap-5">
+                                                <button
+                                                    class="clickable-btn px-5 py-2 rounded-lg border border-purple-600 bg-purple-100 text-purple-700 text-sm font-semibold cursor-pointer">Exact
+                                                    Time</button>
+                                                <button
+                                                    class="clickable-btn px-5 py-2 rounded-lg border border-purple-600 text-purple-700 text-sm font-semibold cursor-pointer">±
+                                                    1 hour</button>
+                                                <button
+                                                    class="clickable-btn px-5 py-2 rounded-lg border border-purple-600 text-purple-700 text-sm font-semibold cursor-pointer">±
+                                                    2 hour</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <script>
-                                const morningTimes = document.getElementById("morning-times");
-                                const eveningTimes = document.getElementById("evening-times");
-                                const resetBtn = document.getElementById("reset-btn");
-                                const selectedTimeDisplay = document.getElementById("selected-time");
-                                let selectedTimes = [];
-                            
-                                function createTimeSlots(container, times, period) {
-                                    times.forEach(time => {
-                                        const span = document.createElement("span");
-                                        span.textContent = time;
-                                        span.classList.add("bg-gray-200", "p-2", "rounded-md", "cursor-pointer", "hover:bg-gray-300");
-                                        span.addEventListener("click", () => {
-                                            $(span).toggleClass("bg-purple-600 text-white");
-                            
-                                            const formattedTime = `${time} ${period}`;
-                                            if ($(span).hasClass("bg-purple-600")) {
-                                                selectedTimes.push(formattedTime);
-                                            } else {
-                                                selectedTimes = selectedTimes.filter(t => t !== formattedTime);
-                                            }
-                            
-                                            const formattedSelection = selectedTimes.map(time => `${time}`).join(", ");
-                                            selectedTimeDisplay.textContent = formattedSelection || "Select Time";
+
+                                <script>
+                                    const morningTimes = document.getElementById("morning-times");
+                                    const eveningTimes = document.getElementById("evening-times");
+                                    const resetBtn = document.getElementById("reset-btn");
+                                    const selectedTimeDisplay = document.getElementById("selected-time");
+                                    let selectedTimes = [];
+
+                                    function createTimeSlots(container, times, period) {
+                                        times.forEach(time => {
+                                            const span = document.createElement("span");
+                                            span.textContent = time;
+                                            span.classList.add("bg-gray-200", "p-2", "rounded-md", "cursor-pointer", "hover:bg-gray-300");
+                                            span.addEventListener("click", () => {
+                                                $(span).toggleClass("bg-purple-600 text-white");
+
+                                                const formattedTime = `${time} ${period}`;
+                                                if ($(span).hasClass("bg-purple-600")) {
+                                                    selectedTimes.push(formattedTime);
+                                                } else {
+                                                    selectedTimes = selectedTimes.filter(t => t !== formattedTime);
+                                                }
+
+                                                const formattedSelection = selectedTimes.map(time => `${time}`).join(", ");
+                                                selectedTimeDisplay.textContent = formattedSelection || "Select Time";
+                                            });
+                                            container.appendChild(span);
                                         });
-                                        container.appendChild(span);
+                                    }
+
+                                    createTimeSlots(morningTimes, ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"], "AM");
+                                    createTimeSlots(eveningTimes, ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"], "PM");
+
+                                    resetBtn.addEventListener("click", () => {
+                                        $("span.bg-purple-600").removeClass("bg-purple-600 text-white");
+                                        selectedTimes = [];
+                                        selectedTimeDisplay.textContent = "Select Time";
                                     });
-                                }
-                            
-                                createTimeSlots(morningTimes, ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"], "AM");
-                                createTimeSlots(eveningTimes, ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"], "PM");
-                            
-                                resetBtn.addEventListener("click", () => {
-                                    $("span.bg-purple-600").removeClass("bg-purple-600 text-white");
-                                    selectedTimes = [];
-                                    selectedTimeDisplay.textContent = "Select Time";
-                                });
-                            
-                                // Update clickable buttons to change color to #7E22CE on click
-                                $(document).on('click', '.clickable-btn', function() {
-                                    $(this).css("background-color", "#7E22CE");
-                                    $(this).css("color", "#ffffff");
-                                    $(this).siblings().css("background-color", ""); // Reset the other buttons
-                                    $(this).siblings().css("color", ""); // Reset the other buttons
-                                });
-                            </script>
+
+                                    // Update clickable buttons to change color to #7E22CE on click
+                                    $(document).on('click', '.clickable-btn', function () {
+                                        $(this).css("background-color", "#7E22CE");
+                                        $(this).css("color", "#ffffff");
+                                        $(this).siblings().css("background-color", ""); // Reset the other buttons
+                                        $(this).siblings().css("color", ""); // Reset the other buttons
+                                    });
+                                </script>
+                            </div>
 
                         </div>
                         <!-- Buttons -->
-                        <div class="flex gap-2 w-full md:w-auto">
+                        <div class="flex gap-5 w-full md:w-auto">
                             <button
                                 class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 w-full md:w-auto cursor-pointer">Clear
                                 all</button>
